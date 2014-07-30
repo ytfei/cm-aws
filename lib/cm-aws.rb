@@ -1,2 +1,3 @@
 
-puts "Hello, CM-AWS"
+require 'cm/client'
+require 'cm/opt'

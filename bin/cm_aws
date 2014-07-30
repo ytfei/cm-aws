@@ -1,2 +1,32 @@
 #!/usr/bin/env ruby
 $:.unshift(File.dirname(__FILE__) + '/../lib') unless $:.include?(File.dirname(__FILE__) + '/../lib')
+
+require 'cm-aws'
+require 'pp'
+require 'cm/util'
+
+include CM::Util
+
+@l = new_logger
+
+if ARGV.length == 0
+  puts './bin/cm_aws [start|stop]'
+  exit
+end
+
+cmd = ARGV.shift
+
+opt = CM::Opt.parse(ARGV)
+@l.info opt
+
+client = CM::Client.new(opt)
+
+case cmd
+  when 'start'
+    client.start
+
+  when 'stop'
+    client.stop
+end
+
+
