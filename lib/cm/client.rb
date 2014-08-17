@@ -62,7 +62,6 @@ module CM
       req_ids = resp[:spot_instance_request_set].map { |r| r[:spot_instance_request_id] }
 
       wait_for_spot(req_ids, timeout)
-      @log.info instance_ids
     end
 
     def wait_for_spot(request_ids, timeout)
